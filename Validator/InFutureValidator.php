@@ -23,7 +23,7 @@ class InFutureValidator extends ConstraintValidator
     /**
      * Indicates whether the constraint is valid
      *
-     * @param DateTime   $datetime
+     * @param DateTime|string   $datetime
      * @param Constraint $constraint
      */
     public function isValid($datetime, Constraint $constraint)
@@ -33,7 +33,7 @@ class InFutureValidator extends ConstraintValidator
             return true;
         }
         
-        $time = strtotime($datetime);
+        $time = is_string($datetime) ? strtotime($datetime) : $datetime->getTimestamp();
         if ($time === false) {
             $this->setMessage('请输入正确的时间');
             return false;
