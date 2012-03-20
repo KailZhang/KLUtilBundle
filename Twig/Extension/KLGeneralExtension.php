@@ -17,7 +17,7 @@ class KLGeneralExtension extends \Twig_Extension
         );
     }
     
-    public function getArrayFirstElement($obj, $context = null, array $arguments = array(), $domain = "messages", $locale = null)
+    public function getArrayFirstElement($obj, $domain = "messages", $locale = null)
     {
         if (is_array($obj) && !empty($obj)) {
             return $obj[0];
@@ -25,7 +25,7 @@ class KLGeneralExtension extends \Twig_Extension
         return $obj;
     }
 
-    public function getArrayLastElement($obj, $context = null, array $arguments = array(), $domain = "messages", $locale = null)
+    public function getArrayLastElement($obj, $domain = "messages", $locale = null)
     {
         if (is_array($obj) && !empty($obj)) {
             return $obj[count($obj) - 1];

@@ -7,6 +7,7 @@
 	<parameters>
 		<parameter key="twig.extension.kl_trans.class">KL\UtilBundle\Twig\Extension\KLTranslationExtension</parameter>
 		<parameter key="twig.extension.kl_general.class">KL\UtilBundle\Twig\Extension\KLGeneralExtension</parameter>
+		<parameter key="twig.extension.kl_image.class">KL\UtilBundle\Twig\Extension\KLImageExtension</parameter>
 		<parameter key="kl_util.zodiac.class">KL\UtilBundle\Time\Zodiacal</parameter>
 	</parameters>
 
@@ -19,6 +20,11 @@
 		<service id="twig.extension.kl_general" class="%twig.extension.kl_general.class%" public="false">
 			<tag name="twig.extension" />
 		</service>
+		
+        <service id="twig.extension.kl_image" class="%twig.extension.kl_image.class%" public="false">
+            <tag name="twig.extension" />
+            <argument type="service" id="service_container" />
+        </service>
 
 		<service id="kl_util.zodiac" class="%kl_util.zodiac.class%" />
 	</services>
