@@ -14,6 +14,8 @@ class KLGeneralExtension extends \Twig_Extension
         return array(
             'first' => new \Twig_Filter_Method($this, 'getArrayFirstElement'),
             'last' => new \Twig_Filter_Method($this, 'getArrayLastElement'),
+            'startsWith' => new \Twig_Filter_Method($this, 'stringStartsWith'),
+            'endsWith' => new \Twig_Filter_Method($this, 'stringEndsWith'),
         );
     }
     
@@ -31,6 +33,17 @@ class KLGeneralExtension extends \Twig_Extension
             return $obj[count($obj) - 1];
         }
         return $obj;
+    }
+    
+    public function stringStartsWith($str, $prefix)
+    {
+        return strpos($str, $prefix) === 0;
+    }
+    
+    public function stringEndsWith($str, $suffix)
+    {
+        $expectedPos = strlen(str) - strlen($suffix);
+        return strpos($str, $suffix) === $expectedPos;
     }
 
     /**
