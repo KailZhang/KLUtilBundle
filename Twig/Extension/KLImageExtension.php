@@ -68,6 +68,9 @@ class KLImageExtension extends \Twig_Extension
         $webRoot = $this->container->getParameter('liip_imagine.web_root');
         $webRoot = rtrim($webRoot, '/');
         $imgPath = $webRoot . '/' . ltrim($obj, '/');
+        if (!file_exists($imgPath)) {
+            return 0;
+        }
         
         $heighten = $this->getSiden($filter, 'heighten');
         list($width, $height) = getimagesize($imgPath);
@@ -87,6 +90,9 @@ class KLImageExtension extends \Twig_Extension
         $webRoot = $this->container->getParameter('liip_imagine.web_root');
         $webRoot = rtrim($webRoot, '/');
         $imgPath = $webRoot . '/' . ltrim($obj, '/');
+        if (!file_exists($imgPath)) {
+            return 0;
+        }
         
         $widen = $this->getSiden($filter, 'widen');
         list($width, $height) = getimagesize($imgPath);
